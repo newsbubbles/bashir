@@ -85,6 +85,11 @@ sudo yum install php php-mysql
 sudo systemctl restart httpd
 ```
 
+## Limitations I've Found
+There are probably way more I haven't found, but here are the ones so far:
+- When outputting large lists of things like asking to list installed packages you shouldn't try to force it to use things like `more` or subcommands that pretty up the output.  It is fine to make it get a little creative and pipe to grep or something, but it is best if you want to actually read some long list, tell it in plain english to "output the list to a file named out.txt"
+- There is still no really good way to handle longer running processes so things like etecting timeout and sending Ctrl+C to the process are not really that great of a solution. Currently I try to have it just every 10 seconds try to flush the output of the command to screen if process takes longer than that.
+
 ## Conclusion
 It is pretty experimental but it was a quick script to put together and it seems like it will definitely help me set up EC2 instances on Amazon Linux, etc.
 
