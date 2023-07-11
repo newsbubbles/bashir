@@ -1,7 +1,7 @@
-# bashir
-An LLM based Junior System Admin for wrapping Linux/Bash shell originally but also every other type of shell.
+# bashir & wombat
+An LLM based Junior System Admin for wrapping Linux/Bash shell and it's Windows counterpart. Bashir for Linux and Wombat for Windows.
 
-I have done system admin for a long time and I've gotten tired of having to look up commands on different types of linux for things I don't often use. This handy little script translates a natural language prompt into commands for my terminal and shows me the output as if I were just entering the right commands. I just tell bashir what I want it to do or ask it what I want to know about the system, and it will put together a bash script, run it and forward me the output as if it were the shell.
+I have done system admin for a long time and I've gotten tired of having to look up commands on different types of operating systems for things I don't often use. This handy little script translates a natural language prompt into commands for my terminal and shows me the output as if I were just entering the right commands. I just tell bashir (or wombat) what I want it to do or ask it what I want to know about the system, and it will put together a script, run it and forward me the output as if it were the shell.
 
 ![Screenshot](https://github.com/newsbubbles/bashir/assets/1012779/923db62e-fa21-4635-8014-12c665c31313)
 
