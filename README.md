@@ -8,6 +8,9 @@ I have done system admin for a long time and I've gotten tired of having to look
 ## Disclaimer
 *Bashir uses gpt-3.5 by default and is an experimental script. Use caution when using bashir as it will perform superuser commands if needed.  I suggest testing capabilities within a VM or dedicated cloud instance.  Any damages, direct or indirect, real or perceived, implied or unexpected, that you may incur on your person or your devices while using bashir are not the responsibility of the author and by using bashir you are legally pardoning the author from any such claim of responsibility or damages.*
 
+## Privacy
+I like privacy and I know you probably do too. Short of using a local model (which I encourage you to try and let me know how it turns out), I have included some security features into how bashir works.  It does not send your OSes responses or chat history to the LLM API.  It only sends every time the system message and your user message as if it were the first message after system message.  Since the prompts you are sending are pretty much questions about your OS or broad commands like "install a node/react online store dev stack", this will avoid most possible privacy breaches when using hosted LLMs like OpenAI's models.
+
 ## Requirements
 - OpenAI
 - LangChain
