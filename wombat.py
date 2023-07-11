@@ -1,3 +1,4 @@
+## Wombat: by @Saffire33 a.k.a. Hattendo
 ## Bashir: by @MachineArts a.k.a @newsbubbles
 
 import os, time, uuid, argparse, pexpect
@@ -21,14 +22,6 @@ def save_script(content, comment=None):
     with open(fn, 'w+') as f:
         f.write(content)
     return fn
-
-def get_system_type():
-    if platform.system() == "Windows":
-        return "Windows"
-    elif platform.system() == "Linux":
-        return "Linux"
-    else:
-        return "Unknown"
 
 ## Body
 

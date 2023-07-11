@@ -1,3 +1,5 @@
+# @Saffire33 a.k.a. Hattendo
+
 import platform
 
 def get_system_type():
