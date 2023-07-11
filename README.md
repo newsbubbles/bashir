@@ -1,5 +1,10 @@
 # bashir
-An LLM based Junior System Admin for Linux/Bash originally but also every other type of cli.
+An LLM based Junior System Admin for wrapping Linux/Bash shell originally but also every other type of shell.
+
+I have done system admin for a long time and I've gotten tired of having to look up commands on different types of linux for things I don't often use. This handy little script translates a natural language prompt into commands for my terminal and shows me the output as if I were just entering the right commands. I just tell bashir what I want it to do or ask it what I want to know about the system, and it will put together a bash script, run it and forward me the output as if it were the shell.
+
+## Disclaimer
+*Bashir uses gpt-3.5 by default and is an experimental script. Use caution when using bashir as it will perform superuser commands if needed.  I suggest testing capabilities within a VM or dedicated cloud instance.  Any damages, direct or indirect, real or perceived, implied or unexpected, that you may incur on your person or your devices while using bashir are not the responsibility of the author and by using bashir you are legally pardoning the author from any such claim of responsibility or damages.*
 
 ## Requirements
 - OpenAI
@@ -20,6 +25,7 @@ If you want this to persist when you reboot your computer, make sure to add that
 ```bash
 python bashir.py
 ```
+When you run bashir, it will start out by asking you the `sudo` password.  This is in the case that you are going to ask bashir questions that will make it generate commands that are 
 
 ## If you have Alternate OS and shell environment
 ```bash
@@ -28,7 +34,7 @@ python bashir.py --os=Ubuntu22 --shell=sh
 Assumed defaults are OS=RHEL9 and shell=bash.  These two variables go into the LLM's prompt so the format of OS name/version is not strict.
 
 ## How it Works
-Bashir creates a `scripts` folder wherever you are running it.  In this folder it places a bash script. (yes, not currently working to change the actual shell, still a priority). The bash script includes a comment with the original prompt and is assigned a unique identifier as it's name.  It is then chmodded to allow execution, and executed in a wrapped shell process.  Bashir uses pexpect to expect the prompt and effectively wrap the bash shell within the python instance, so you get actual output from the embedded shell.
+Bashir creates a `scripts` folder wherever you are running it.  In this folder it places a bash script. The bash script includes a comment with the original prompt and is assigned a unique identifier as it's name.  It is then chmodded to allow execution, and executed in a wrapped shell process.  Bashir uses pexpect to expect the prompt or a few other things and effectively wrap the bash shell within the python instance, so you get actual output from the embedded shell.
 
 To exit bashir type `exit` at the prompt and hit `Enter`.
 
@@ -57,6 +63,10 @@ mkdir project_name
 cd project_name
 git init
 touch README.md
+```
+```bash
+# Prompt> open a new terminal window
+gnome-terminal
 ```
 I am pretty sure this next one needs to be run using bashir as root or with `sudo python bashir.py`
 ```bash
