@@ -27,6 +27,11 @@ Replace `{YOUR-API-KEY}` with your OpenAI API Key.
 If you want this to persist when you reboot your computer, make sure to add that line to the end of your ~/.bashrc file
 
 ## Usage
+To be lazy and just let python choose what tool to use, use `entry`
+```bash
+python entry.py
+```
+for **Linux** or **MacOS** use
 ```bash
 python bashir.py
 ```
