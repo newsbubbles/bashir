@@ -29,7 +29,7 @@ python bashir.py
 ```
 When you run bashir, it will start out by asking you the `sudo` password.  This is in the case that you are going to ask bashir questions that will make it generate commands that need to use the superuser permissions level.  This is where I exercise using caution when asking it things.  It will write any bash script, so it might even be able to mess up your environment pretty bad if you aren't careful what you ask for.  I will work on putting more effort into security in future versions.
 
-## If you have Alternate OS and shell environment
+### If you have Alternate OS and shell environment
 ```bash
 python bashir.py --os=Ubuntu22 --shell=sh
 ```
@@ -43,6 +43,7 @@ To exit bashir type `exit` at the prompt and hit `Enter`.
 ## To Be Added
 - Human verification (on all scripts or only on ones that use "sudo" thus performing system changes)
 - Properly changing the shell environment and using ".bat" scripts for windows as default if used as OS
+- Some way to properly forward output on long running processes with pexpect
 
 ## Examples
 In these examples, the bash script is shown and original prompt as a comment at the top followed by the bash commands that the LLM responded to the prompt with to be run
