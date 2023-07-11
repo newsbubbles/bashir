@@ -68,6 +68,10 @@ git init
 touch README.md
 ```
 ```bash
+# Prompt> do I have the urllib3 pip package installed?
+pip list | grep urllib3
+```
+```bash
 # Prompt> open a new terminal window
 gnome-terminal
 ```
