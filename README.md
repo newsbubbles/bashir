@@ -29,7 +29,7 @@ I like privacy and I know you probably do too. Short of using a local model (whi
 
 ## Install
 ```bash
-pip install openai, langchain
+pip install openai, langchain, pexpect
 ```
 If you haven't already added `OPENAI_API_KEY` to your environment this is a good time to do it.
 ```bash
@@ -60,7 +60,7 @@ python bashir.py --os=Ubuntu22 --shell=sh
 Assumed defaults are OS=RHEL9 and shell=bash.  These two variables go into the LLM's prompt so the format of OS name/version is not strict.
 
 ## How it Works
-Bashir creates a `scripts` folder wherever you are running it.  In this folder it places a bash script. The bash script includes a comment with the original prompt and is assigned a unique identifier as it's name.  It is then chmodded to allow execution, and executed in a wrapped shell process.  Bashir uses pexpect to expect the prompt or a few other things and effectively wrap the bash shell within the python instance, so you get actual output from the embedded shell.
+Bashir creates a `scripts` folder wherever you are running it.  In this folder it places a bash script. The bash script includes a comment with the original prompt and is assigned a unique identifier as it's name.  It is then chmodded to allow execution, and executed in a wrapped shell process.  Bashir uses pexpect to expect the prompt or a few other things and effectively wrap the bash shell within the python instance, so you get actual output from the embedded shell. Bashir tries to take advantage of the "conversational" way that terminals and command line interfaces already work
 
 To exit bashir type `exit` at the prompt and hit `Enter`.
 
@@ -126,10 +126,18 @@ sudo apt install -y apache2
 sudo apt install -y mariadb-server
 sudo apt install -y php libapache2-mod-php php-mysql
 ```
-## A set of Questions
+
+## More Reflections on this prompt shell paradigm
+
+### A set of questions
 ![scshot2](https://github.com/newsbubbles/bashir/assets/1012779/46e3f683-3b07-4aaf-95bf-27bc7161a1c3)
 
 Perhaps the most interesting context that emerges from going about command line as a sequence of prompts is that natural language prompts are cross-OS-compatible. Technicaly one could save a sequence of prompts as a server set up and then just run bashir aftter installing python on the server and let bashir handle translating the sequence of server setup prompts into the proper OS and shell language.
+
+### Using bashir to update bashir properly
+![image](https://github.com/newsbubbles/bashir/assets/1012779/7fe54729-e283-44bf-a1db-1da73a2391e3)
+
+I actually run into this problem sometimes with git repos where I end up making some change, only to realize I needed to do it another way but I already saved that file and it is now ahead of `master` or `main`... It happens so inoften that I have to look up the proper commands.  This morning bashir saved me at least 5 minutes looking for this solution, *again*, and it was solved in about 4 seconds.
 
 ## Limitations I've Found
 There are probably way more I haven't found, but here are the ones so far:
