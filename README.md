@@ -9,6 +9,12 @@ An LLM based Junior System Admin for Linux/Bash originally but also every other 
 ```bash
 pip install openai, langchain
 ```
+If you haven't already added `OPENAI_API_KEY` to your environment this is a good time to do it.
+```bash
+export OPENAI_API_KEY={YOUR-API-KEY}
+```
+Replace `{YOUR-API-KEY}` with your OpenAI API Key.
+If you want this to persist when you reboot your computer, make sure to add that line to the end of your ~/.bashrc file
 
 ## Usage
 ```bash
