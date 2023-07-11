@@ -11,6 +11,18 @@ I have done system admin for a long time and I've gotten tired of having to look
 ## Privacy
 I like privacy and I know you probably do too. Short of using a local model (which I encourage you to try and let me know how it turns out), I have included some security features into how bashir works.  It does not send your OSes responses or chat history to the LLM API.  It only sends the system message and your current user message as if it were the first message in the chat.  Since the prompts you are sending are pretty much questions about your OS or broad commands like "install a node/react online store dev stack", this will avoid most possible privacy breaches when using hosted LLMs like OpenAI's models.
 
+## Features
+- Run entirely generated customized bash scripts with just a natural language prompt
+- Ask any question the operating system can answer and it will
+- Keeps a copy of all scripts generated in `scripts` folder
+
+## Features To Be Added
+- Human verification (on all scripts or only on ones that use "sudo" thus performing system changes)
+- Script line selection with cursor (lets user decide which lines to run from script)
+- Properly changing the shell environment and using ".bat" scripts for windows as default if used as OS
+- Some way to properly forward output on long running processes with pexpect
+- Alternate solutions (multiple generations and a choice between running entire scripts)
+
 ## Requirements
 - OpenAI
 - LangChain
@@ -51,11 +63,6 @@ Assumed defaults are OS=RHEL9 and shell=bash.  These two variables go into the L
 Bashir creates a `scripts` folder wherever you are running it.  In this folder it places a bash script. The bash script includes a comment with the original prompt and is assigned a unique identifier as it's name.  It is then chmodded to allow execution, and executed in a wrapped shell process.  Bashir uses pexpect to expect the prompt or a few other things and effectively wrap the bash shell within the python instance, so you get actual output from the embedded shell.
 
 To exit bashir type `exit` at the prompt and hit `Enter`.
-
-## To Be Added
-- Human verification (on all scripts or only on ones that use "sudo" thus performing system changes)
-- Properly changing the shell environment and using ".bat" scripts for windows as default if used as OS
-- Some way to properly forward output on long running processes with pexpect
 
 ## Examples
 In these examples, the bash script is shown and original prompt as a comment at the top followed by the bash commands that the LLM responded to the prompt with to be run
