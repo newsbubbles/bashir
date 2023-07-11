@@ -98,7 +98,6 @@ pip list | grep urllib3
 # Prompt> open a new terminal window
 gnome-terminal
 ```
-I am pretty sure this next one needs to be run using bashir as root or with `sudo python bashir.py`
 ```bash
 # Prompt> install a LAMP stack
 sudo yum install httpd
