@@ -90,6 +90,7 @@ sudo systemctl restart httpd
 ```
 ## A set of Questions
 ![scshot2](https://github.com/newsbubbles/bashir/assets/1012779/6a66b083-8146-4d63-aa47-0170c02bfcf4)
+
 Perhaps the most interesting context that emerges from going about command line as a sequence of prompts is that natural language prompts are cross-OS-compatible. Technicaly one could save a sequence of prompts as a server set up and then just run bashir aftter installing python on the server and let bashir handle translating the sequence of server setup prompts into the proper OS and shell language.
 
 ## Limitations I've Found
