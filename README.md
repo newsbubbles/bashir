@@ -30,6 +30,10 @@ If you want this to persist when you reboot your computer, make sure to add that
 ```bash
 python bashir.py
 ```
+for **Windows** use
+```cmd
+python wombat.py
+```
 When you run bashir, it will start out by asking you the `sudo` password.  This is in the case that you are going to ask bashir questions that will make it generate commands that need to use the superuser permissions level.  This is where I exercise using caution when asking it things.  It will write any bash script, so it might even be able to mess up your environment pretty bad if you aren't careful what you ask for.  I will work on putting more effort into security in future versions.
 
 ### If you have Alternate OS and shell environment
@@ -51,6 +55,17 @@ To exit bashir type `exit` at the prompt and hit `Enter`.
 ## Examples
 In these examples, the bash script is shown and original prompt as a comment at the top followed by the bash commands that the LLM responded to the prompt with to be run
 
+Asking the time in Linux
+```bash
+# Prompt> what time is it?
+date "+%T"
+```
+Asking the time in Windows
+```cmd
+REM Prompt> what time is it?
+echo %TIME%
+```
+More examples in Linux...
 ```bash
 # Prompt> what folder am I in?
 pwd
