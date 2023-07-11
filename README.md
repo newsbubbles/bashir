@@ -3,6 +3,8 @@ An LLM based Junior System Admin for wrapping Linux/Bash shell originally but al
 
 I have done system admin for a long time and I've gotten tired of having to look up commands on different types of linux for things I don't often use. This handy little script translates a natural language prompt into commands for my terminal and shows me the output as if I were just entering the right commands. I just tell bashir what I want it to do or ask it what I want to know about the system, and it will put together a bash script, run it and forward me the output as if it were the shell.
 
+![Screenshot from 2023-07-10 20-35-40](https://github.com/newsbubbles/bashir/assets/1012779/923db62e-fa21-4635-8014-12c665c31313)
+
 ## Disclaimer
 *Bashir uses gpt-3.5 by default and is an experimental script. Use caution when using bashir as it will perform superuser commands if needed.  I suggest testing capabilities within a VM or dedicated cloud instance.  Any damages, direct or indirect, real or perceived, implied or unexpected, that you may incur on your person or your devices while using bashir are not the responsibility of the author and by using bashir you are legally pardoning the author from any such claim of responsibility or damages.*
 
