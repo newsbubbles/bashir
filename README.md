@@ -163,6 +163,12 @@ There are probably way more I haven't found, but here are the ones so far:
 - There is still no really good way to handle longer running processes so things like detecting timeout and sending Ctrl+C to the process are not really that great of a solution. Currently I try to have it just every 10 seconds try to flush the output of the command to screen if process takes longer than that.
 - This one is perhaps a design choice, but I have not built any sort of memory into the agent that allows it to keep context within the prompt about things that the OS says.  That being said, one limitation is that you can't make "chains" of scripts that rely on the output from previous scripts.  Well, not yet anyway.
 
+## Cost of using OpenAI GPT-3.5-Turbo
+GPT-3.5-Turbo is quite the formidable model for this task, meaning that very soon it will be outstripped by local models, but it might be awhile before a model that can be run inference at good speed on a GeForce RTX 3060 mobile GPU. Until then I found that gptt-3.5-turbo is an efficient model that is very quick and has costed me pennies.
+![token usage](https://github.com/newsbubbles/bashir/assets/1012779/ebd9d52a-3927-4efe-9dbd-a1878814a25b)
+
+These are the costs incurred during the development of this project so far (day 2), and I have done hundreds of prompts which might come out to about 1,000 actual commands being executed by my computer.
+
 ## Conclusion
 It is pretty experimental but it was a quick script to put together and it seems like it will definitely help me set up EC2 instances on Amazon Linux, etc.
 
