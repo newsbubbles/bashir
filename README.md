@@ -12,9 +12,12 @@ I have done system admin for a long time and I've gotten tired of having to look
 I like privacy and I know you probably do too. Short of using a local model (which I encourage you to try and let me know how it turns out), I have included some security features into how bashir works.  It does not send your OSes responses or chat history to the LLM API.  It only sends the system message and your current user message as if it were the first message in the chat.  Since the prompts you are sending are pretty much questions about your OS or broad commands like "install a node/react online store dev stack", this will avoid most possible privacy breaches when using hosted LLMs like OpenAI's models.
 
 ## Features
+- Fully wraps the terminal or command line interface for seamless remote admin
 - Run entirely generated customized bash scripts with just a natural language prompt
-- Ask any question the operating system can answer and it will
-- Keeps a copy of all scripts generated in `scripts` folder
+- Use the *entire* operating system as your AI toolkit
+- Prompt history and linux-like autocomplete with `tab` and ⬆️, ⬇️ keys
+- Keeps a copy of all scripts generated in `./scripts` folder
+- Confimation modes for running system critical scripts
 
 ## Features To Be Added
 - Human verification (on all scripts or only on ones that use "sudo" thus performing system changes)
@@ -150,7 +153,7 @@ Perhaps the most interesting context that emerges from going about command line 
 I actually run into this problem sometimes with git repos where I end up making some change, only to realize I needed to do it another way but I already saved that file and it is now ahead of `master` or `main`... It happens so inoften that I have to look up the proper commands.  This morning bashir saved me at least 5 minutes looking for this solution, *again*, and it was solved in about 4 seconds.
 
 ### SuperUser Confirmation Mode
-![superuser-mode](https://github.com/newsbubbles/bashir/assets/1012779/06c7d326-052a-430e-892a-5f650a2d93d1)
+![superuser_mode](https://github.com/newsbubbles/bashir/assets/1012779/67e1a1de-a706-43f1-b299-07bd88b11e5b)
 
 To run in superuser mode just use the `--confirm-superuser` command line argument when calling up bashir.py.  In the above example, I have written a bash script that runs bashir with some settings for my computer plus passing along the command line arguments.  The other options are `--confirm-none` to force back to default mode (not needed at the moment) and `--confirm-all` for those moments when you want to just see the script and babysit some entire proccess.
 
