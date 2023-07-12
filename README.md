@@ -1,4 +1,4 @@
-# bashir & wombat
+![image](https://github.com/newsbubbles/bashir/assets/1012779/d8032ba4-cec6-4ea8-89ba-ae0d2951aa59)# bashir & wombat
 An LLM based Junior System Admin for wrapping Linux/Bash shell and it's Windows counterpart. Bashir for Linux and Wombat for Windows.
 
 I have done system admin for a long time and I've gotten tired of having to look up commands on different types of operating systems for things I don't often use. This handy little script translates a natural language prompt into commands for my terminal and shows me the output as if I were just entering the right commands. I just tell bashir (or wombat) what I want it to do or ask it what I want to know about the system, and it will put together a script, run it and forward me the output as if it were the shell.
@@ -148,6 +148,11 @@ Perhaps the most interesting context that emerges from going about command line 
 ![image](https://github.com/newsbubbles/bashir/assets/1012779/7fe54729-e283-44bf-a1db-1da73a2391e3)
 
 I actually run into this problem sometimes with git repos where I end up making some change, only to realize I needed to do it another way but I already saved that file and it is now ahead of `master` or `main`... It happens so inoften that I have to look up the proper commands.  This morning bashir saved me at least 5 minutes looking for this solution, *again*, and it was solved in about 4 seconds.
+
+### SuperUser Confirmation Mode
+![superuser-mode](https://github.com/newsbubbles/bashir/assets/1012779/06c7d326-052a-430e-892a-5f650a2d93d1)
+
+To run in superuser mode just use the `--confirm-superuser` command line argument when calling up bashir.py.  In the above example, I have written a bash script that runs bashir with some settings for my computer plus passing along the command line arguments.  The other options are `--confirm-none` to force back to default mode (not needed at the moment) and `--confirm-all` for those moments when you want to just see the script and babysit some entire proccess.
 
 ## Limitations I've Found
 There are probably way more I haven't found, but here are the ones so far:
