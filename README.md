@@ -126,12 +126,12 @@ sudo apt install -y apache2
 sudo apt install -y mariadb-server
 sudo apt install -y php libapache2-mod-php php-mysql
 ```
-Some more novel ideas for prompts...
+### Some more novel ideas for prompts...
+LangChain has "Tool using Agents" where you define a set of tools in the prompt for the agent to use. That is a great and pretty useful concept within a small set of possible actions, but an agent that can make bash script has literally all of the tools of the operating system at it's behest. Not only calculator but curl with data manipulation and comprehension...
 ```bash
 # Prompt> what is 7 + 298
 echo $((7 + 298))
 ```
-LangChain has "Tool using Agents" where you define a set of tools in the prompt for the agent to use. That is a great and pretty useful concept within a small set of possible actions, but an agent that can make bash script has literally all of the tools of the operating system at it's behest. Not only calculator but curl with data manipulation and comprehension...
 ```bash
 # Prompt> what is the top headline on reddit.com?
 curl -s "https://www.reddit.com/.json" | jq -r '.data.children[0].data.title'
