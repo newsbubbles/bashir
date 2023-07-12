@@ -126,6 +126,16 @@ sudo apt install -y apache2
 sudo apt install -y mariadb-server
 sudo apt install -y php libapache2-mod-php php-mysql
 ```
+Some more novel ideas for prompts...
+```bash
+# Prompt> what is 7 + 298
+echo $((7 + 298))
+```
+LangChain has "Tool using Agents" where you define a set of tools in the prompt for the agent to use. That is a great and pretty useful concept within a small set of possible actions, but an agent that can make bash script has literally all of the tools of the operating system at it's behest. Not only calculator but curl with data manipulation and comprehension...
+```bash
+# Prompt> what is the top headline on reddit.com?
+curl -s "https://www.reddit.com/.json" | jq -r '.data.children[0].data.title'
+```
 
 ## More Reflections on this prompt shell paradigm
 
@@ -143,6 +153,7 @@ I actually run into this problem sometimes with git repos where I end up making 
 There are probably way more I haven't found, but here are the ones so far:
 - When outputting large lists of things like asking to list installed packages you shouldn't try to force it to use things like `more` or subcommands that pretty up the output.  It is fine to make it get a little creative and pipe to grep or something, but it is best if you want to actually read some long list, tell it in plain english to "output the list to a file named out.txt"
 - There is still no really good way to handle longer running processes so things like detecting timeout and sending Ctrl+C to the process are not really that great of a solution. Currently I try to have it just every 10 seconds try to flush the output of the command to screen if process takes longer than that.
+- This one is perhaps a design choice, but I have not built any sort of memory into the agent that allows it to keep context within the prompt about things that the OS says.  That being said, one limitation is that you can't make "chains" of scripts that rely on the output from previous scripts.  Well, not yet anyway.
 
 ## Conclusion
 It is pretty experimental but it was a quick script to put together and it seems like it will definitely help me set up EC2 instances on Amazon Linux, etc.
