@@ -1,4 +1,5 @@
 ## Bashir: by @MachineArts a.k.a @newsbubbles
+## version: 0.0.1, build: 2
 
 import os, time, uuid, argparse, pexpect
 from langchain.chat_models import ChatOpenAI
@@ -10,14 +11,21 @@ try:
 except ImportError:
     import pyreadline as readline
 
+# Confirmation state and other vars
+CONFIRM_NONE, CONFIRM_ALL, CONFIRM_SUDO = 0, 1, 2
+confirmation = CONFIRM_ALL
 
 ## Support
 def parse_args():
     parser = argparse.ArgumentParser(description='Bashir Command Line Arguments')
     parser.add_argument('--os', default='RHEL9', help='Operating system; eg "RHEL9"')
     parser.add_argument('--shell', default='bash', help='Shell name; eg "bash" or "PowerShell"')
+    parser.add_argument('--confirm-super', action=argparse.BooleanOptionalAction, help='Confirmation on superuser based scripts')
+    parser.add_argument('--confirm-all', action=argparse.BooleanOptionalAction, help='Confirmation on all scripts')
+    parser.add_argument('--confirm-none', action=argparse.BooleanOptionalAction, help='Confirm Nothing [default]')
     args = parser.parse_args()
-    return args.os, args.shell
+    conf = CONFIRM_NONE if args.confirm_none else CONFIRM_ALL if args.confirm_all else CONFIRM_SUDO
+    return args.os, args.shell, conf
 
 def save_script(content, comment=None):
     fn = sdir + '/' + str(uuid.uuid4()) + '.sh'
@@ -31,14 +39,13 @@ def save_script(content, comment=None):
     os.chmod(fn, perm)
     return fn
 
+def conf_mode():
+    return 'none' if confirmation == CONFIRM_NONE else 'superuser' if confirmation == CONFIRM_SUDO else 'all'
+
 ## Body
 
 # Context Settings: can be any OS and command line interpreter
-operating_system, cli = parse_args()
-
-# Confirmation state and other vars
-CONFIRM_NONE, CONFIRM_ALL, CONFIRM_SUDO = 0, 1, 2
-confirmation = CONFIRM_NONE
+operating_system, cli, confirmation = parse_args()
 
 # Configure prompt history for fancier more util input
 try:
@@ -58,13 +65,17 @@ if not os.path.exists(sdir):
 
 # Title
 print('\n--------------------------------------------\nBashir: LLM based Junior System Admin v0.1.0\n--------------------------------------------\n')
-print('OS:', operating_system, '\nCLI:', cli, '\n')
+print('OS:', operating_system, 
+    '\nCLI:', cli, 
+    '\nConfirm. Mode:', conf_mode(),
+    '\n'
+)
 
 # Spawn a new bash shell
 child = pexpect.spawn('/bin/bash', echo=False)
 
 # Set up for sudo prompting
-password = None if confirmation > CONFIRM_NONE else getpass.getpass("Enter sudo password: ")
+password = getpass.getpass("Enter sudo password: ")
 sudo_prompt = r'\[sudo\] password for .*: '
 def_prompt = 'Prompt> '
 
@@ -89,6 +100,15 @@ while True:
         # Perform call to LLM and get a bash script in return
         response = chat([system_message, HumanMessage(content=command)])
         bash_script = response.content
+
+        has_sudo = 'sudo ' in bash_script
+        hs_confirm = has_sudo and confirmation == CONFIRM_SUDO
+        if confirmation == CONFIRM_ALL or hs_confirm:
+            print(f'\n{bash_script}')
+            confirm = input('\nRun Script? [Yes, No]: ')
+            if len(confirm) > 0:
+                if confirm[0].lower() == 'n':
+                    continue
 
         # Save the bash script
         script_path = save_script(bash_script, comment=def_prompt + command.strip())
