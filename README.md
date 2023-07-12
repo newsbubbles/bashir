@@ -168,12 +168,12 @@ GPT-3.5-Turbo is quite the formidable model for this task, meaning that very soo
 
 ![token usage](https://github.com/newsbubbles/bashir/assets/1012779/ebd9d52a-3927-4efe-9dbd-a1878814a25b)
 
-These are the costs incurred during the development of this project so far (day 2), and I have done hundreds of prompts which might come out to about 1,000 actual commands being executed by my computer.  Feel free to change the model using the `--model` command and the correct Model name from OpenAI Chat API. Here are some example models you can use:
+These are the costs incurred during the development of this project so far (day 2), and I have done hundreds of prompts which might come out to about 1,000 actual commands being executed by my computer.  Feel free to change the model using the `--model` command line argument and the correct model name from OpenAI Chat API. Here are some example models you can use:
 - `gpt-3.5`
 - `gpt-3.5-turbo`
 - `gpt-4`
 
-[This blog](https://gptforwork.com/guides/openai-gpt3-models) shows a snapshot of what models are available currently and what their prices are as of mid June 2023.
+I haven't seen the need to use their newer versions or the longer input length versions because of the small prompt context needed for bashir to work correctly. [This blog](https://gptforwork.com/guides/openai-gpt3-models) shows a snapshot of what models are available currently and what their prices are as of mid June 2023.
 
 ## Conclusion
 It is pretty experimental but it was a quick script to put together and it seems like it will definitely help me set up EC2 instances on Amazon Linux, etc.
